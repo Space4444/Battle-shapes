@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battle shapes", "Battle shapes.csproj", "{C4E49336-2204-0B23-2E05-73D3C7553CCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battle shapes.Plugins", "Battle shapes.Plugins.csproj", "{D6DE0B55-CD60-5501-7C68-A2CC8B3114F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battle shapes.Editor.Plugins", "Battle shapes.Editor.Plugins.csproj", "{3603DC0D-1D54-B8A5-A842-D6272BF639C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4E49336-2204-0B23-2E05-73D3C7553CCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4E49336-2204-0B23-2E05-73D3C7553CCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4E49336-2204-0B23-2E05-73D3C7553CCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4E49336-2204-0B23-2E05-73D3C7553CCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6DE0B55-CD60-5501-7C68-A2CC8B3114F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6DE0B55-CD60-5501-7C68-A2CC8B3114F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6DE0B55-CD60-5501-7C68-A2CC8B3114F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6DE0B55-CD60-5501-7C68-A2CC8B3114F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3603DC0D-1D54-B8A5-A842-D6272BF639C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3603DC0D-1D54-B8A5-A842-D6272BF639C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3603DC0D-1D54-B8A5-A842-D6272BF639C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3603DC0D-1D54-B8A5-A842-D6272BF639C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

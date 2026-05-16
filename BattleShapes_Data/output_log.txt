@@ -1,0 +1,75 @@
+Initialize engine version: 2017.1.0f3 (472613c02cf7)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon R9 M200X Series (ID=0x6821)
+    Vendor:   ATI
+    VRAM:     2027 MB
+    Driver:   27.20.1034.6
+Begin MonoManager ReloadAssembly
+Platform assembly: F:\Users\Alex\Documents\Battle shapes\BattleShapes_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading F:\Users\Alex\Documents\Battle shapes\BattleShapes_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: F:\Users\Alex\Documents\Battle shapes\BattleShapes_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading F:\Users\Alex\Documents\Battle shapes\BattleShapes_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: F:\Users\Alex\Documents\Battle shapes\BattleShapes_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading F:\Users\Alex\Documents\Battle shapes\BattleShapes_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: F:\Users\Alex\Documents\Battle shapes\BattleShapes_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading F:\Users\Alex\Documents\Battle shapes\BattleShapes_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: F:\Users\Alex\Documents\Battle shapes\BattleShapes_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading F:\Users\Alex\Documents\Battle shapes\BattleShapes_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: F:\Users\Alex\Documents\Battle shapes\BattleShapes_Data\Managed\UnityEngine.Timeline.dll (this message is harmless)
+Loading F:\Users\Alex\Documents\Battle shapes\BattleShapes_Data\Managed\UnityEngine.Timeline.dll into Unity Child Domain
+Platform assembly: F:\Users\Alex\Documents\Battle shapes\BattleShapes_Data\Managed\System.dll (this message is harmless)
+Platform assembly: F:\Users\Alex\Documents\Battle shapes\BattleShapes_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  1.986 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 41.749900 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.357000 ms
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1361.
+Total: 3.150400 ms (FindLiveObjects: 0.069900 ms CreateObjectMapping: 0.040100 ms MarkObjects: 0.654400 ms  DeleteObjects: 2.385700 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.120900 ms
+
+Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 1361.
+Total: 0.791600 ms (FindLiveObjects: 0.057400 ms CreateObjectMapping: 0.042300 ms MarkObjects: 0.629900 ms  DeleteObjects: 0.061600 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.661700 ms
+
+Unloading 36 unused Assets to reduce memory usage. Loaded Objects now: 1323.
+Total: 0.612200 ms (FindLiveObjects: 0.035100 ms CreateObjectMapping: 0.029500 ms MarkObjects: 0.515200 ms  DeleteObjects: 0.031800 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.983200 ms
+
+Unloading 97 unused Assets to reduce memory usage. Loaded Objects now: 1427.
+Total: 1.103800 ms (FindLiveObjects: 0.092100 ms CreateObjectMapping: 0.033400 ms MarkObjects: 0.889200 ms  DeleteObjects: 0.088700 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.066600 ms
+
+Unloading 109 unused Assets to reduce memory usage. Loaded Objects now: 811.
+Total: 1.156700 ms (FindLiveObjects: 0.040000 ms CreateObjectMapping: 0.031600 ms MarkObjects: 0.680700 ms  DeleteObjects: 0.403700 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.423800 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 1319.
+Total: 3.101500 ms (FindLiveObjects: 0.053600 ms CreateObjectMapping: 0.050700 ms MarkObjects: 0.666400 ms  DeleteObjects: 2.330200 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.971800 ms
+
+Unloading 112 unused Assets to reduce memory usage. Loaded Objects now: 811.
+Total: 0.838700 ms (FindLiveObjects: 0.030700 ms CreateObjectMapping: 0.027600 ms MarkObjects: 0.476900 ms  DeleteObjects: 0.302800 ms)
+
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 3c3c -> priority: 1 
+  Thread -> id: 1cc8 -> priority: 1 
+  Thread -> id: 2370 -> priority: 1 
+  Thread -> id: 41bc -> priority: 1 
