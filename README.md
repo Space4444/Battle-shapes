@@ -4,3 +4,5 @@ There are infinite number of levels with increasing difficulty. You can earn mon
 
 It is made with Unity and C# for Android. To play it, open file "BattleShapes.apk". You can also open "BattleShapes.exe" on Windows,
 but controls are designed only for Android.
+
+[Game trailer](https://youtu.be/IeJ7vSicGfo)
