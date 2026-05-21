@@ -14,6 +14,7 @@ This is 2D game where you control a triangular spaceship and fight against alien
 
 ## Tech stack
 - [Unity](https://unity.com/)
+- [Shader Lab](https://docs.unity3d.com/Manual/SL-Reference.html)
 
 ## Overview
 
