@@ -26,3 +26,8 @@ Also enemies drop unique upgrades that you can't buy at the shop.
 
 Open file "BattleShapes.apk" on Android. You can also open "BattleShapes.exe" on Windows,
 but controls are designed only for Android.
+
+## License
+
+[MIT](LICENSE) © Space4444
+
