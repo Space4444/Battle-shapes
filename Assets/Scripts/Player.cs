@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using System.Diagnostics;
 
 public class Player : MonoBehaviour
 {
@@ -31,9 +33,11 @@ public class Player : MonoBehaviour
     private List<Color> shotColor = new List<Color>();
     private Dictionary<int, System.Action> Actions = new Dictionary<int, System.Action> { };
     private System.Action BulletsHitTest, InstantiateShots;
+    private Vector2 tapPos, halfScreenSize;
 
     void Awake()
     {
+        halfScreenSize = new Vector2(Screen.width, Screen.height) * 0.5f;
         itemCounts = new char[itemCount];
         requiredItems = new int[] { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 11, -1, -1, -1, -1, -1, 7, -1, -1, 9, 12, 11, 14, 10, 13, };
         maxItemCounts = new char[] {(char)1,
@@ -80,7 +84,7 @@ public class Player : MonoBehaviour
         }
         if (PlayerPrefs.HasKey("maxHP"))
             HP = maxHP = PlayerPrefs.GetFloat("maxHP", maxHP);
-        if (PlayerPrefs.HasKey("speed"))
+        if (PlayerPrefs.HasKey("maxSpd"))
             maxSpd = PlayerPrefs.GetFloat("maxSpd", maxSpd);
         if (PlayerPrefs.HasKey("repair"))
             repair = PlayerPrefs.GetFloat("repair", repair);
@@ -892,9 +896,38 @@ public class Player : MonoBehaviour
         }
         itemCounts[id]--;
     }
+
+    void CheckPCInput()
+    {
+        float up = Keyboard.current.wKey.ReadValue();
+        float left = Keyboard.current.aKey.ReadValue();
+        float down = Keyboard.current.sKey.ReadValue();
+        float right = Keyboard.current.dKey.ReadValue();
+        if (up != 0 || left != 0 || down != 0 || right != 0)
+        {
+            if (!moving) StartMove();
+            Moving(Mathf.Atan2(up - down, right - left), 1f);
+        } else if (moving)
+        {
+            StopMove();
+        }
+        
+        Vector2 mouseDelta = Mouse.current.delta.ReadValue();
+        Vector2 d = Mouse.current.position.ReadValue() - halfScreenSize;
+        Firing(Mathf.Atan2(d.y, d.x), 1f);
+        
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+            StartFire();
+        if (Mouse.current.leftButton.wasReleasedThisFrame)
+            StopFire();
+    }
     // Update is called once per frame
     void Update()
     {
+        #if !UNITY_ANDROID
+            CheckPCInput();
+        #endif
+
         shape.transform.rotation = rotation;
         if (HP > 0)
             backgroundRend.material.SetVector("pos", new Vector2(transform.position.x, transform.position.y));
