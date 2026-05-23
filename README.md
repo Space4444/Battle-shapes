@@ -9,6 +9,10 @@ Versions for Android, Web and Windows are available.
 
 ## [Game trailer](https://youtu.be/IeJ7vSicGfo)
 
+## [Web demo](https://space4444.github.io/Battle-shapes/)
+
+## [Play on UnityPlay](https://play.unity.com/en/games/6987fd3c-8ecd-4d28-8f59-ca21a9befdd1/webbuild)
+
 ## Features
 - Upgrade system
 - Progress saving
@@ -16,10 +20,6 @@ Versions for Android, Web and Windows are available.
 ## Tech stack
 - [Unity](https://unity.com/)
 - [Shader Lab](https://docs.unity3d.com/Manual/SL-Reference.html)
-
-## [Web demo](https://space4444.github.io/Battle-shapes/)
-
-## [Play on UnityPlay](https://play.unity.com/en/games/6987fd3c-8ecd-4d28-8f59-ca21a9befdd1/webbuild)
 
 ## Overview
 
