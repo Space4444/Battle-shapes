@@ -750,7 +750,7 @@ public class Player : MonoBehaviour
                     break;
                 case 2:
                     gunAmount -= 5;
-                    fireRate *= (gunAmount + 3.75f) / gunAmount;
+                    fireRate /= (gunAmount + 3.75f) / gunAmount;
                     if (gunAmount == 2)
                     {
                         shotCoords = new float[2];
