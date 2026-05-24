@@ -18,10 +18,17 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointer
 
     private void Start()
     {
-        #if !UNITY_ANDROID
+        #if UNITY_WEBGL
+
+            if (!Application.isMobilePlatform)
+                gameObject.SetActive(false);
+
+        #elif !UNITY_ANDROID
+
             gameObject.SetActive(false);
+
         #endif
-        halfScreenSize = new Vector2(Screen.width, Screen.height) * 0.5f;
+
         width1 = 1f / width;
         canvas = ((RectTransform)transform).GetComponentInParent<Canvas>();
     }
@@ -38,6 +45,7 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointer
     public virtual void OnDrag(PointerEventData data)
     {
         tapPos = data.position;
+        halfScreenSize = new Vector2(Screen.width, Screen.height) * 0.5f;
         Vector2 d = tapPos - halfScreenSize - (Vector2)transform.localPosition * canvas.scaleFactor;
         float c = d.magnitude;
         value = c > width ? width : c;

@@ -7,7 +7,7 @@ public class Turret : MonoBehaviour
     public Game game;
     public Player player;
     public GameObject shot, shotExp;
-    public int fireRate = 22;
+    public float fireRate = 22;
     public float length, damage = 2f, shotSpd = .25f, shotSpd1 = 4f;
     public AudioSource strikeSource;
     private int fireTimer = 20;

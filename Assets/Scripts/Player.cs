@@ -3,12 +3,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Diagnostics;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public bool piercing = false, laser = false;
     public bool moving = false;
-    public int fireRate = 11;
+    public float fireRate = 11f;
     public int itemCount = 29, money = 0;
     public char[] itemCounts, maxItemCounts;
     public int[] requiredItems;
@@ -33,11 +34,11 @@ public class Player : MonoBehaviour
     private List<Color> shotColor = new List<Color>();
     private Dictionary<int, System.Action> Actions = new Dictionary<int, System.Action> { };
     private System.Action BulletsHitTest, InstantiateShots;
-    private Vector2 tapPos, halfScreenSize;
+    private Vector2 halfScreenSize;
+    private Vector2 lastResolution;
 
     void Awake()
     {
-        halfScreenSize = new Vector2(Screen.width, Screen.height) * 0.5f;
         itemCounts = new char[itemCount];
         requiredItems = new int[] { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 11, -1, -1, -1, -1, -1, 7, -1, -1, 9, 12, 11, 14, 10, 13, };
         maxItemCounts = new char[] {(char)1,
@@ -89,7 +90,7 @@ public class Player : MonoBehaviour
         if (PlayerPrefs.HasKey("repair"))
             repair = PlayerPrefs.GetFloat("repair", repair);
         if (PlayerPrefs.HasKey("fireRate"))
-            fireRate = fireTimer = PlayerPrefs.GetInt("fireRate");
+            fireRate = PlayerPrefs.GetFloat("fireRate");
         if (PlayerPrefs.HasKey("steal"))
             lifeSteal = PlayerPrefs.GetFloat("steal");
         if (PlayerPrefs.HasKey("stun"))
@@ -463,6 +464,11 @@ public class Player : MonoBehaviour
         //HP = maxHP = 30000f;damage = 50f;speed = .5f;
     }
 
+    private void Start()
+    {
+        lastResolution = new Vector2(Screen.width, Screen.height);
+    }
+
     private float Ang(float value)
     {
         if (value > Mathf.PI)
@@ -524,7 +530,7 @@ public class Player : MonoBehaviour
         for (int i = 0; i < itemCount; i++)
             PlayerPrefs.SetString(string.Concat("itemCounts" + i.ToString()), itemCounts[i].ToString());
         PlayerPrefs.SetInt("gunAmount", gunAmount);
-        PlayerPrefs.SetInt("fireRate", fireRate);
+        PlayerPrefs.SetFloat("fireRate", fireRate);
         PlayerPrefs.SetFloat("shotSpd", shotSpd);
         PlayerPrefs.SetInt("maxShotAge", StaticVars.maxShotAge);
         PlayerPrefs.SetFloat("damage", damage);
@@ -566,7 +572,7 @@ public class Player : MonoBehaviour
             switch (id)
             {
                 case 0:
-                    fireRate = Mathf.FloorToInt(fireRate * (gunAmount + .75f) / gunAmount);
+                    fireRate *= (gunAmount + .75f) / gunAmount;
                     gunAmount++;
                     if (gunAmount == 2)
                     {
@@ -579,11 +585,11 @@ public class Player : MonoBehaviour
                     }
                     break;
                 case 1:
-                    fireRate = Mathf.FloorToInt(fireRate * (gunAmount + 1.5f) / gunAmount);
+                    fireRate *= (gunAmount + 1.5f) / gunAmount;
                     gunAmount += 2;
                     break;
                 case 2:
-                    fireRate = Mathf.FloorToInt(fireRate * (gunAmount + 3.75f) / gunAmount);
+                    fireRate *= (gunAmount + 3.75f) / gunAmount;
                     gunAmount += 5;
                     break;
                 case 3:
@@ -593,8 +599,8 @@ public class Player : MonoBehaviour
                     turret.length = length = StaticVars.maxShotAge * shotSpd;
                     damage *= 1.5f;
                     turret.damage *= 1.5f;
-                    fireRate = Mathf.FloorToInt(fireRate * 1.5f);
-                    turret.fireRate = Mathf.FloorToInt(turret.fireRate * 1.5f);
+                    fireRate *= 1.5f;
+                    turret.fireRate *= 1.5f;
                     SetShotColor(Color.yellow, true);
                     break;
                 case 4:
@@ -668,8 +674,8 @@ public class Player : MonoBehaviour
                     turret.damage += .5f * mult;
                     break;
                 case 18:
-                    fireRate = Mathf.FloorToInt(fireRate * .9f);
-                    turret.fireRate = Mathf.FloorToInt(turret.fireRate * .9f);
+                    fireRate *= .9f;
+                    turret.fireRate *= .9f;
                     break;
                 case 19:
                     HPrend.material.SetFloat("maxHP", maxHP += 25f);
@@ -726,12 +732,12 @@ public class Player : MonoBehaviour
             switch (id)
             {
                 case 0:
-                    fireRate = Mathf.CeilToInt(fireRate * (gunAmount - .75f) / gunAmount);
                     gunAmount--;
+                    fireRate /= (gunAmount + .75f) / gunAmount;
                     break;
                 case 1:
-                    fireRate = Mathf.CeilToInt(fireRate * (gunAmount - 1.5f) / gunAmount);
                     gunAmount -= 2;
+                    fireRate /= (gunAmount + 1.5f) / gunAmount;
                     if (gunAmount == 2)
                     {
                         shotCoords = new float[2];
@@ -743,8 +749,8 @@ public class Player : MonoBehaviour
                     }
                     break;
                 case 2:
-                    fireRate = Mathf.CeilToInt(fireRate * (gunAmount - 3.75f) / gunAmount);
                     gunAmount -= 5;
+                    fireRate *= (gunAmount + 3.75f) / gunAmount;
                     if (gunAmount == 2)
                     {
                         shotCoords = new float[2];
@@ -763,8 +769,8 @@ public class Player : MonoBehaviour
                     turret.length = length;
                     damage *= .66666666f;
                     turret.damage *= .66666666f;
-                    fireRate = Mathf.CeilToInt(fireRate * .66666666f);
-                    turret.fireRate = Mathf.FloorToInt(turret.fireRate * .66666666f) + 1;
+                    fireRate *= .66666666f;
+                    turret.fireRate = (turret.fireRate * .66666666f) + 1;
                     SetShotColor(Color.yellow, false);
                     break;
                 case 4:
@@ -798,8 +804,13 @@ public class Player : MonoBehaviour
                     Color c = shot.GetComponent<SpriteRenderer>().color;
                     shot = StaticVars.shot;
                     shot.GetComponent<SpriteRenderer>().color = c;
-                    if (piercing)
+                    if (piercing) {
                         damage *= .2f;
+                        shot.GetComponent<SpriteRenderer>().sprite = StaticVars.shotSprites[3];
+                    } else
+                    {
+                        shot.GetComponent<SpriteRenderer>().sprite = StaticVars.shotSprites[2];
+                    }
                     BulletsHitTest = Actions[piercing ? 1 : 0];
                     InstantiateShots = Actions[homing ? 3 : 2];
                     break;
@@ -838,8 +849,8 @@ public class Player : MonoBehaviour
                     turret.damage -= .5f * mult;
                     break;
                 case 18:
-                    fireRate = Mathf.CeilToInt(fireRate * 1.111111111f);
-                    turret.fireRate = Mathf.CeilToInt(turret.fireRate * 1.111111111f);
+                    fireRate *= 1.111111111f;
+                    turret.fireRate *= 1.111111111f;
                     break;
                 case 19:
                     HPrend.material.SetFloat("maxHP", maxHP -= 25f);
@@ -912,6 +923,7 @@ public class Player : MonoBehaviour
             StopMove();
         }
         
+        halfScreenSize = new Vector2(Screen.width, Screen.height) * 0.5f;
         Vector2 mouseDelta = Mouse.current.delta.ReadValue();
         Vector2 d = Mouse.current.position.ReadValue() - halfScreenSize;
         Firing(Mathf.Atan2(d.y, d.x), 1f);
@@ -924,9 +936,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        #if !UNITY_ANDROID
+        #if UNITY_WEBGL
+
+            if (!Application.isMobilePlatform)
+                CheckPCInput();
+
+        #elif !UNITY_ANDROID
+
             CheckPCInput();
+
         #endif
+
+        if (Screen.width != (int)lastResolution.x || Screen.height != (int)lastResolution.y) {
+            SceneManager.LoadScene(0);
+        }
 
         shape.transform.rotation = rotation;
         if (HP > 0)
