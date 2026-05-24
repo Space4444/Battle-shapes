@@ -11,7 +11,7 @@ Versions for Android, Web and Windows are available.
 
 ## [Web demo](https://space4444.github.io/Battle-shapes/)
 
-## [Play on UnityPlay](https://play.unity.com/en/games/6987fd3c-8ecd-4d28-8f59-ca21a9befdd1/webbuild)
+## [Play on UnityPlay](https://play.unity.com/en/games/6987fd3c-8ecd-4d28-8f59-ca21a9befdd1/battleshapes)
 
 ## Features
 - Upgrade system
