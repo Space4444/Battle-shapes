@@ -27,7 +27,7 @@ There are infinite number of levels with increasing difficulty.
 You can earn money, buy upgrades at the shop and fight against bosses.
 Also enemies drop unique upgrades that you can't buy at the shop.
 
-You can play on web at the links above or download and install "BattleShapes.apk" on Android or download "Win64Build" and open "BattleShapes.exe" on Windows.
+You can play on web at the links above or download and install "BattleShapes.apk" on Android or download "Win64Build" and open "Battle shapes.exe" on Windows.
 
 ## License
 
