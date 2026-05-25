@@ -2,7 +2,6 @@
 
 public class Boss : Enemy
 {
-    
     //private Color col1;
     private bool shooting;
     private GameObject healthBar, wormHole;
